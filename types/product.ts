@@ -1,13 +1,12 @@
-// write an interface for product
 export interface Product{
     title: string;
     description: string;
     image: string;
-    category:Array<string>;
-    badge: string;
+    category: string;
+    tag: string|"new"|"out of stock"|"sale";
     price: number;
-    rating: number;
+    rating: number|4.5;
     id: number;
     quantity: number;
-    inCart: boolean;
+    inCart: boolean|false;
 }

@@ -4,29 +4,52 @@ import Button from './components/common/Button';
 import Card from './components/widgets/Card';
 import NavBar from './components/sections/NavBar';
 import Footer from './components/sections/Footer';
-import Carousel from './components/common/Carousel';
+import Carousel from './components/common/Product';
+import Hero from './components/sections/Hero';
 // @ts-ignore
 import {StateProvider } from './global'
 import './App.css';
 
 function App() {
-  return (
-    <StateProvider initialState={''} reducer=''>
+// Initial state of the cart on client side
 
-    <div className="App">
+  const initialState = {
+    cart: []
+  }
+
+  // Reducer function to update the state of the cart on client side
+
+  const reducer = (state: any, action: any) => {
+    switch(action.type) {
+      case 'ADD_TO_CART':
+        return {
+          ...state,
+          cart: [...state.cart, action.item]
+        };
+      case 'REMOVE_FROM_CART':
+        const index = state.cart.findIndex(
+          (cartItem: any) => cartItem.id === action.id
+        );
+        let newCart = [...state.cart];
+        if (index >= 0) {
+          newCart.splice(index, 1);
+        }
+        return {
+          ...state,
+          cart: newCart
+        };
+      default:
+        return state;
+    }
+  }
+  return (
+    <StateProvider initialState={initialState} reducer={reducer}>
+
+    <div className="App bg-white ml-3 mr-3">
       <NavBar />
-      <Button name="Hello" type="primary" />
-      <Card
-        title="Nike Air Max"
-        description="The Nike Air Max 270 React ENG combines the iconic Air Max 270 with React foam for a lightweight, bouncy ride."
-        image="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/3b9b8b1a-1b1d-4b1f-9b1f-8b2b2b2b2b2b/air-max-270-react-eng-shoe-1JZxJx.jpg"
-        category={["Nike", "Shoes"]}
-        tag={"New"}
-      />
+      <Hero />
       <Carousel />
       <Footer/>
-
-      
     </div>
     </StateProvider>
 
