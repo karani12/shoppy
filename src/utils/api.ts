@@ -46,6 +46,7 @@ export const addToCart = (product: Product) => {
 export const removeFromCart = (product: Product) => {
     const cartItems = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")!) : [];
     localStorage.setItem("cartItems", JSON.stringify(cartItems.filter((item: Product) => item.id !== product.id)));
+    window.location.reload();
 }
 
 // get cart items from local storage

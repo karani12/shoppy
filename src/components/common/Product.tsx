@@ -52,7 +52,7 @@ function Products() {
         <div>
             <div>
                 <div className="tabs tabs-boxed bg-white md:ml-36 mt-14">
-                    <div className=' w-2/4 flex flex-wrap'>
+                    <div className=' md: w-2/4 flex flex-wrap'>
 
                     <input type={'button'} value="all" id='all' onClick={filterProducts} className="tab tab-active m-3 px-4" />
                     <input type={'button'} className="tab m-3 px-4 border" value={'electronics'} id='electronics' onClick={filterProducts} />
