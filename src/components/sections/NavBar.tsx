@@ -37,7 +37,7 @@ function NavBar() {
                             
                             <span className="text-info">Subtotal: ${totalPrice}</span>
                             <div className="card-actions">
-                            
+                           
                                 <a href="/checkout">
 
                                 <button className="btn btn-secondary btn-block">View cart</button>

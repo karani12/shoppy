@@ -7,7 +7,10 @@ function Hero() {
             <div className="welcome">
                 <h1 className="text-5xl font-black mb-5">Welcome to Shoppy</h1>
                 <p className=" mb-3">Your one stop shop</p>
+                <a href="/#products">
+
                 <Button  name="Start Viewing" type="secondary"/>
+                </a>
             </div>
             {/* image */}
 

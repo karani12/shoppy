@@ -6,7 +6,7 @@ function CartCard(props: Product) {
     
     return (
 
-        <div className="card card-side w-3/5 bg-base-100 shadow-xl m-3 ">
+        <div className="card card-side md:w-3/6 bg-base-100 shadow-xl m-3 ">
             <figure><img src={props.image} className="h-40 w-40 object-contain" alt={props.title}/></figure>
             <div className="card-body">
                 <h2 className="card-title">{props.title}</h2>
