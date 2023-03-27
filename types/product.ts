@@ -6,7 +6,7 @@ export interface Product{
     tag: string|"new"|"out of stock"|"sale";
     price: number;
     rating: number|4.5;
-    id: number;
+    id: string;
     quantity: number;
     inCart: boolean|false;
 }

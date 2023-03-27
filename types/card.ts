@@ -4,6 +4,7 @@ export interface CardProps{
     image: string;
     category:string;
     tag: string; 
+    id:string;
 }
 
 export default CardProps;

@@ -9,7 +9,7 @@ export const fetchProducts = async (): Promise<Product[]> => {
 }
 // get one product
 
-export const getProduct = async (id: number): Promise<Product> => {
+export const getProduct = async (id: string): Promise<Product> => {
     const response = await fetch(`https://fakestoreapi.com/products/${id}`);
     const data = await response.json();
     return data;

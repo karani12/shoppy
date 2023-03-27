@@ -1,11 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
-import Button from './components/common/Button';
-import Card from './components/widgets/Card';
 import NavBar from './components/sections/NavBar';
 import Footer from './components/sections/Footer';
-import Carousel from './components/common/Product';
-import Hero from './components/sections/Hero';
+import Home from './pages/Home';
+import ProductPage from './pages/ProductPage';
+import Checkout from './pages/Checkout';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 // @ts-ignore
 import {StateProvider } from './global'
 import './App.css';
@@ -45,11 +43,17 @@ function App() {
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
 
-    <div className="App bg-white ml-3 mr-3">
+    <div className="App bg-white ml-3 mr-3 m-auto">
       <NavBar />
-      <Hero />
-      <Carousel />
-      <Footer/>
+      <BrowserRouter>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="product/:id" element={<ProductPage />} />
+        <Route path="checkout" element={<Checkout />} />
+      </Routes>
+
+      </BrowserRouter>
+      {/* <Footer/> */}
     </div>
     </StateProvider>
 
