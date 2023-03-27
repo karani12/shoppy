@@ -48,6 +48,12 @@ export const removeFromCart = (product: Product) => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems.filter((item: Product) => item.id !== product.id)));
 }
 
+// get cart items from local storage
+
+export function getCartItems(): Product[]{
+    return localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")!) : [];
+}
+
 // on checkout clear cart
 
 export const onCheckout = () => {

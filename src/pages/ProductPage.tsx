@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { addToCart } from "../utils/api";
 import { getProduct } from "../utils/api";
 import { Product } from "../../types/product";
-import Button from "../components/common/Button";
 function ProductPage() {
-
-    const [product, setProduct] = useState<Product>();
-    const [quantity, setQuantity] = useState<number>(1);
-
-    const AddToCart = () => {
-
-    };
     useEffect(() => {
         const id = window.location.pathname.split("/")[2];
         getProduct(id).then((res) => {
@@ -18,6 +11,19 @@ function ProductPage() {
         });
 
     }, []);
+
+    const [product, setProduct] = useState<Product>();
+    const [quantity, setQuantity] = useState<number>(1);
+    const [added, setAdded ] = useState<boolean>(false);
+
+
+ 
+
+    const AddToCart = () => {
+        addToCart(product!)
+        setAdded(true);
+        
+    };
 
 
     return (
@@ -42,11 +48,10 @@ function ProductPage() {
                         <div className="badge badge-outline rounded-md">{product?.category}</div>
                     </div>
                 </div>
-                <p className="ml-3 mt-4">Quantity</p>
-                    <input type="number" placeholder="2" className="ml-3  text-black border m-auto p-2 border-black rounded-md w-12 h-12 " />
                 <div className=" pt-4 pb-3 flex items-center">
-                    <button  name="Add to cart"  className="btn btn-secondary" onClick={AddToCart}>Add To Cart</button>
-                   
+                    {
+                        added ? <button className="btn btn-success">Added To Cart</button> : <button className="btn btn-secondary" onClick={AddToCart}>Add To Cart</button>
+                    }
                 </div>
             </div>
             </div>

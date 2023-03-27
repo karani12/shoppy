@@ -12,7 +12,6 @@ function Home() {
 
             </div>
             <div>
-
         <Products />
             </div>
             <div>
