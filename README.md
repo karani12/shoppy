@@ -43,9 +43,9 @@ shoppy-two.vercel.app/
 Sreenshots:
 
 ![Image](./public/1.png)
-![Image](../shoppy/public/2.png)
-![Image](../shoppy/public/3.png)
-![Image](../shoppy/public/4.png)
-![Image](../shoppy/public/5.png)
+![Image](./public/2.png)
+![Image](./public/3.png)
+![Image](./public/4.png)
+![Image](./public/5.png)
 
 
