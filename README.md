@@ -14,6 +14,7 @@ This is a simple shop built as coding test for a job application.
 - Tailwind
 - React Router
 - DaisyUI
+- Github CI
 
 ## Requirements
 - Node.js
