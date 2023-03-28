@@ -35,7 +35,7 @@ function NavBar() {
                         <div className="card-body">
                             <span className="font-bold text-lg">{''}</span>
                             
-                            <span className="text-info">Subtotal: ${totalPrice}</span>
+                            <span className="text-info">Subtotal: ${totalPrice.toFixed()}</span>
                             <div className="card-actions">
                            
                                 <a href="/checkout">

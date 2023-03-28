@@ -1,15 +1,14 @@
 import NavBar from './components/sections/NavBar';
-import Footer from './components/sections/Footer';
 import Home from './pages/Home';
 import ProductPage from './pages/ProductPage';
 import Checkout from './pages/Checkout';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // @ts-ignore
-import {StateProvider } from './global'
+import { StateProvider } from './global'
 import './App.css';
 
 function App() {
-// Initial state of the cart on client side
+  // Initial state of the cart on client side
 
   const initialState = {
     cart: []
@@ -18,7 +17,13 @@ function App() {
   // Reducer function to update the state of the cart on client side
 
   const reducer = (state: any, action: any) => {
-    switch(action.type) {
+    switch (action.type) {
+      case 'CALCULATE_TOTAL':
+        return {
+          ...state,
+          total: action.total
+        };
+
       case 'ADD_TO_CART':
         return {
           ...state,
@@ -43,18 +48,18 @@ function App() {
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
 
-    <div className="App bg-white ml-3 mr-3 m-auto">
-      <NavBar />
-      <BrowserRouter>
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="product/:id" element={<ProductPage />} />
-        <Route path="checkout" element={<Checkout />} />
-      </Routes>
+      <div className="App bg-white ml-3 mr-3 m-auto">
+        <NavBar />
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="product/:id" element={<ProductPage />} />
+            <Route path="checkout" element={<Checkout />} />
+          </Routes>
 
-      </BrowserRouter>
-      {/* <Footer/> */}
-    </div>
+        </BrowserRouter>
+        {/* <Footer/> */}
+      </div>
     </StateProvider>
 
   );

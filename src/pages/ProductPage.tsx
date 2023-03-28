@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { addToCart } from "../utils/api";
 import { getProduct } from "../utils/api";
-import { Product } from "../../types/product";
+import { CartItem } from "../../types/cart";
 function ProductPage() {
     useEffect(() => {
         const id = window.location.pathname.split("/")[2];
@@ -12,7 +12,7 @@ function ProductPage() {
 
     }, []);
 
-    const [product, setProduct] = useState<Product>();
+    const [product, setProduct] = useState<CartItem>();
     const [quantity, setQuantity] = useState<number>(1);
     const [added, setAdded ] = useState<boolean>(false);
 
@@ -20,7 +20,20 @@ function ProductPage() {
  
 
     const AddToCart = () => {
-        addToCart(product!)
+        const cartItem : CartItem = {
+            id: product!.id,
+            title: product!.title,
+            price: product!.price,
+            image: product!.image,
+            quantity: quantity,
+            inCart: true,
+            description: product!.description,
+            category: product!.category,
+            tag: product!.tag,
+            rating: product!.rating
+        }
+        addToCart(cartItem);
+      
         setAdded(true);
         
     };

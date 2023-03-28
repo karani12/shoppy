@@ -1,5 +1,6 @@
 // fetch products from api
 
+import { CartItem } from "../../types/cart";
 import { Product } from "../../types/product";
 
 export const fetchProducts = async (): Promise<Product[]> => {
@@ -26,7 +27,7 @@ export const filterProductsByCategory = async (category: string): Promise<Produc
 
 // add to cart local storage
 
-export const addToCart = (product: Product) => {
+export const addToCart = (product: CartItem) => {
     const cartItems = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")!) : [];
     let alreadyExists = false;
     cartItems.forEach((item: Product) => {
@@ -36,14 +37,14 @@ export const addToCart = (product: Product) => {
         }
     });
     if(!alreadyExists){
-        cartItems.push({...product, quantity: 1});
+        cartItems.push(product);
     }
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
 
 // remove from cart local storage
 
-export const removeFromCart = (product: Product) => {
+export const removeFromCart = (product: CartItem) => {
     const cartItems = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")!) : [];
     localStorage.setItem("cartItems", JSON.stringify(cartItems.filter((item: Product) => item.id !== product.id)));
     window.location.reload();
@@ -51,7 +52,7 @@ export const removeFromCart = (product: Product) => {
 
 // get cart items from local storage
 
-export function getCartItems(): Product[]{
+export function getCartItems(): CartItem[]{
     return localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")!) : [];
 }
 

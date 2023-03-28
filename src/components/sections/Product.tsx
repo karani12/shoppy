@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import Card from '../widgets/Card';
 import { fetchProducts } from '../../utils/api';
 import { Product } from '../../../types/product';
-import Footer from '../sections/Footer';
+import Footer from './Footer';
 
 function Products() {
     const [products, setProducts] = React.useState<Product[]>([]);

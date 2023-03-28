@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "../components/sections/Hero";
-import Products from "../components/common/Product";
+import Products from "../components/sections/Product";
 import Footer from "../components/sections/Footer";
 
 
